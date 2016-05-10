@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Content from './Content';
+import Header from './Header';
 
 class App extends React.Component {
     _sayHey(){
         alert("hey");
     }
+
     render(){
     let text = "Dev-Server"
     let pStyle = {
@@ -14,16 +17,21 @@ class App extends React.Component {
 
         return (
                 <div>
-                    <h1>Hello World</h1>
-                    <h2> welcome to {text} </h2>
-                    <button onClick={this._sayHey}>Click Me</button>
-                    <p style = {pStyle}>{{text}? 'True' : 'False'}
-                    </p>
+                    <Header title={this.props.headerTitle}/>
+                    <Content title={this.props.contentTitle}
+                             body={this.props.contentBody} 
+                        />
                 </div>
                );
     }
 }
 
+    App.defaultProps = { 
+        headerTitle: "welcome the header", 
+        contentTitle: "uhmmmm",
+        contentBody: "it`s content"
+    }
+
 ReactDOM.render(
-        <App />, document.getElementById('app')
+        <App/>, document.getElementById('app')
         );
