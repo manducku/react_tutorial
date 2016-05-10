@@ -3,21 +3,30 @@ import ReactDOM from 'react-dom';
 import Content from './Content';
 import Header from './Header';
 import RandomNumber from './RandomNumber';
+import Count from './Count';
 
 class App extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            value: Math.round(Math.random()*100)
+            value: Math.round(Math.random()*100),
+            totalCount: 0
         };
 
         this._updateValue = this._updateValue.bind(this);
+        this._updateCount = this._updateCount.bind(this);
     }
 
     _updateValue(randomValue){
         this.setState({
             value: randomValue
+        });
+    }
+
+    _updateCount(count){
+        this.setState({
+            totalCount: count
         });
     }
 
@@ -37,6 +46,8 @@ class App extends React.Component {
 
                     <RandomNumber number={this.state.value}
                                   onUpdate={this._updateValue}/>
+                   <Count number={this.state.totalCount}
+                                onUpdate={this._updateCount}/>             
                 </div>
                );
     }
