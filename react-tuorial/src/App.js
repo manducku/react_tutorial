@@ -2,10 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Content from './Content';
 import Header from './Header';
+import RandomNumber from './RandomNumber';
 
 class App extends React.Component {
-    _sayHey(){
-        alert("hey");
+    constructor(props){
+        super(props);
+
+        this.state = {
+            value: Math.round(Math.random()*100)
+        };
+
+        this._updateValue = this._updateValue.bind(this);
+    }
+
+    _updateValue(randomValue){
+        this.setState({
+            value: randomValue
+        });
     }
 
     render(){
@@ -21,6 +34,9 @@ class App extends React.Component {
                     <Content title={this.props.contentTitle}
                              body={this.props.contentBody} 
                         />
+
+                    <RandomNumber number={this.state.value}
+                                  onUpdate={this._updateValue}/>
                 </div>
                );
     }
