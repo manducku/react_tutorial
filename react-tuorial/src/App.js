@@ -4,8 +4,10 @@ import Content from './Content';
 import Header from './Header';
 import RandomNumber from './RandomNumber';
 import Count from './Count';
+import Contacts from './Contacts';
 
 class App extends React.Component {
+
     constructor(props){
         super(props);
 
@@ -48,6 +50,7 @@ class App extends React.Component {
                                   onUpdate={this._updateValue}/>
                    <Count number={this.state.totalCount}
                                 onUpdate={this._updateCount}/>             
+                   <Contacts />
                 </div>
                );
     }
